@@ -21,10 +21,10 @@ export class RequestPage implements OnInit {
     connect_info:Connect_info ;
     user: User;
     connect_inlfo=[];
-    donations_info:Donations_info 
+    // donations_info=[]
+    donations_info:Donations_info[];
     // =[{furniture:'',clothes:'',electrical_tools:'',dishes:'',baby_things:'',luxuries:'',accessories_and_mobiles:'',medical_devices:'',miscellaneous:''}]
      ;  
-    // donations_info=[]
     constructor(
       private alertService: AlertService,
       private env: EnvService,
@@ -32,13 +32,11 @@ export class RequestPage implements OnInit {
       private httpService :HttpServiceService
   ) { }
 
+  tutorialShown = false;
   ngOnInit() {
   }
 
-
-
-  ionViewWillEnter() {
-    
+  ionViewWillEnter() {    
     this.httpService.makeGet('auth/receive_donation').subscribe(
       // user => {
       //   this.user = user;
@@ -99,4 +97,5 @@ export class RequestPage implements OnInit {
   //   );
   // }
       //  });
-  }}
+  }
+}

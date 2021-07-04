@@ -23,40 +23,44 @@
         </ion-row>
         <br/>
 
-        <ion-item *ngFor="let connect of connect_info">
-        <ion-row>
-          <ion-col class="bold">الاسم</ion-col>
-          <ion-col>{{ connect.name }}</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="bold">رقم الجوال</ion-col>
-          <ion-col>{{ connect.numberphone }}</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="bold">تاريخ الاستلام</ion-col>
-          <ion-col>{{ connect.birth_date }}</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="bold">وقت الاستلام</ion-col>
-          <ion-col>{{ connect.time }}</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="bold"> الحي</ion-col>
-          <ion-col>{{ connect.neighborhood_name }}</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="bold">رقم البيت</ion-col>
-          <ion-col>{{ connect.house_number }}</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="bold">اسم الشارع</ion-col>
-          <ion-col>{{ connect.street_name }}</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="bold">أقرب معلم</ion-col>
-          <ion-col>{{ connect.nearest_landmark }}</ion-col>
-        </ion-row>
-      </ion-item>
+        <div *ngFor="let connect of connect_info" dir="rtl">
+        
+          <ion-row>
+            <ion-col class="bold">الاسم</ion-col>
+            <ion-col>{{ connect.name }}</ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col class="bold">رقم الجوال</ion-col>
+            <ion-col>{{ connect.numberphone }}</ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col class="bold">تاريخ الاستلام</ion-col>
+            <ion-col>{{ connect.birth_date }}</ion-col>
+          </ion-row>
+          
+          <ion-row>
+            <ion-col class="bold">وقت الاستلام</ion-col>
+            <ion-col>{{ connect.time }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="bold"> الحي</ion-col>
+            <ion-col>{{ connect.neighborhood_name }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="bold">رقم البيت</ion-col>
+            <ion-col>{{ connect.house_number }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="bold">اسم الشارع</ion-col>
+            <ion-col>{{ connect.street_name }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="bold">أقرب معلم</ion-col>
+            <ion-col>{{ connect.nearest_landmark }}</ion-col>
+          </ion-row>
+        </div>
 
       </ion-col>
     </ion-row>

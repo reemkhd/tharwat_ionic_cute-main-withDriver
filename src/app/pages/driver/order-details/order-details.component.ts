@@ -11,7 +11,7 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
   styleUrls: ['./order-details.component.scss'],
 })
 export class OrderDetailsComponent implements OnInit {
-  connect_info:Connect_info;
+  connect_info: Connect_info[];
   status: any;
   order_number: any;
   // order_info:Driver;

@@ -18,8 +18,8 @@ import { EnvService } from 'src/app/services/env.service';
 })
 export class NewComponent implements OnInit {
 
-  order_info:Driver;
-  connect_info:Connect_info;
+  order_info:Driver[];
+  connect_info:Connect_info[];
 
   constructor(
     public modalController: ModalController,

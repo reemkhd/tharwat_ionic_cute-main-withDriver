@@ -1,4 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { OrderDetailsComponent } from '../order-details/order-details.component';
+
+import { NavController } from '@ionic/angular';
+import{ HttpServiceService} from '../../../services/http-service.service';
+
+import { Driver } from 'src/app/models/driversModel';
+import { Connect_info } from 'src/app/models/connectinfo';
+
+import { AuthService } from 'src/app/services/auth.service';
+import { EnvService } from 'src/app/services/env.service';
 
 @Component({
   selector: 'app-history',
@@ -6,53 +17,47 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./history.component.scss'],
 })
 export class HistoryComponent implements OnInit {
-  public orderList: any = [
-    {
-      name: "Shahad Aldera",
-      district: "Gandhinagar",
-      date: "15/05/2021",
-      time: "13:45",
-      requestId: "91"
-    },
-    {
-      name: "Neel Khamar",
-      district: "Ahmedabad",
-      date: "12/05/2021",
-      time: "21:35",
-      requestId: "87"
-    },
-    {
-      name: "Dummy User",
-      district: "Gandhinagar",
-      date: "10/05/2021",
-      time: "15:45",
-      requestId: "86"
-    },
-    {
-      name: "Neel Khamar",
-      district: "UAE",
-      date: "12/05/2021",
-      time: "21:35",
-      requestId: "85"
-    },
-    {
-      name: "Shahad Aldera",
-      district: "South Africa",
-      date: "15/05/2021",
-      time: "13:45",
-      requestId: "84"
-    },
-    {
-      name: "Test User",
-      district: "Ahmedabad",
-      date: "12/05/2021",
-      time: "09:35",
-      requestId: "81"
-    }
-  ];
 
-  constructor() { }
+  order_info:Driver[];
+  connect_info:Connect_info[];
+
+  constructor(
+    public modalController: ModalController,
+    private navCtrl: NavController,
+    private httpService :HttpServiceService,
+    private authService: AuthService,
+    private env: EnvService,
+    ) { }
 
   ngOnInit() {}
 
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: OrderDetailsComponent,
+      cssClass: 'my-custom-class'
+    });
+    return await modal.present();
+  }
+
+  ionViewWillEnter() {
+    this.httpService.makeGet('auth/api_receive_orders').subscribe(
+      // user => {
+      //   this.user = user;
+      // },
+      order_info => {
+        this.order_info = order_info;
+        console.log(order_info);
+      }
+    )
+
+    this.httpService.makeGet('auth/receive_infoconnect').subscribe(
+      // user => {
+      //   this.user = user;
+      // },
+      connect_info => {
+        this.connect_info = connect_info;
+        console.log(connect_info);
+      }
+    )
+  }
 }
