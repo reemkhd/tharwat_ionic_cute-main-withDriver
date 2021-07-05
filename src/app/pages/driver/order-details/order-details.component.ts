@@ -33,12 +33,12 @@ export class OrderDetailsComponent implements OnInit {
 
   submit() {
     let data = {
-      order_number:[this.connect_info[0].order_number]
-      // order_number:this.connect_info[0].order_number
+      // order_number:[this.connect_info[0].order_number]
+      order_number:this.connect_info[0].order_number
     }
-    this.order_number = [26078]
-    console.log(this.order_number)
-    this.httpService.post('auth/update_status', data).subscribe(
+    this.order_number = '88897';
+    console.log(data)
+    this.httpService.post('auth/update_status', this.order_number).subscribe(
       order_number => {
         this.alertService.presentToast("تم تحديث البيانات بنجاح");
       },
@@ -55,6 +55,7 @@ export class OrderDetailsComponent implements OnInit {
     this.httpService.makeGet('auth/receive_infoconnect').subscribe(
       connect_info => {
         this.connect_info = connect_info;
+        console.log('connect_info in order details');
         console.log(connect_info);
       }
     )

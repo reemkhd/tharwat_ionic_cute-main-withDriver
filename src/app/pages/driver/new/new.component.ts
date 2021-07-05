@@ -50,7 +50,7 @@ export class NewComponent implements OnInit {
     this.httpService.makeGet('auth/receive_infoconnect').subscribe(
       connect_info => {
         this.connect_info = connect_info;
-        console.log('connect_info');
+        console.log('connect_info in new');
         console.log(connect_info);
       }
     )
