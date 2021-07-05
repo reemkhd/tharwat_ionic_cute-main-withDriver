@@ -1,4 +1,5 @@
 export class Connect_info{
+    order_number:string;
     name:string;
     numberphone:number;
     birth_date:string;

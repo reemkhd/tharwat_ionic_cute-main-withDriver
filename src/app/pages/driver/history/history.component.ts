@@ -18,8 +18,8 @@ import { EnvService } from 'src/app/services/env.service';
 })
 export class HistoryComponent implements OnInit {
 
-  order_info:Driver[];
-  connect_info:Connect_info[];
+  order_info: Driver[];
+  connect_info: Connect_info[];
 
   constructor(
     public modalController: ModalController,
@@ -40,7 +40,7 @@ export class HistoryComponent implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.httpService.makeGet('auth/api_receive_orders').subscribe(
+    this.httpService.makeGet('auth/api_receive_orders_finish').subscribe(
       // user => {
       //   this.user = user;
       // },

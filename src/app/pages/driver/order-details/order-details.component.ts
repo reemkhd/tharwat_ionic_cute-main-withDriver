@@ -13,7 +13,7 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
 export class OrderDetailsComponent implements OnInit {
   connect_info: Connect_info[];
   status: any;
-  order_number: any;
+  order_number:any;
   // order_info:Driver;
 
   constructor(public modalController: ModalController, 
@@ -32,17 +32,14 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   submit() {
-    console.log("Accept")
-    // this.httpService.makeGet('auth/send_status').subscribe()
-    // this.status  = 'accept';
-    this.order_number =  '89485';
-
     let data = {
-      order_number:this.order_number
+      order_number:[this.connect_info[0].order_number]
+      // order_number:this.connect_info[0].order_number
     }
-    console.log(data)
+    this.order_number = [26078]
+    console.log(this.order_number)
     this.httpService.post('auth/update_status', data).subscribe(
-      data => {
+      order_number => {
         this.alertService.presentToast("تم تحديث البيانات بنجاح");
       },
       error => {
@@ -56,9 +53,6 @@ export class OrderDetailsComponent implements OnInit {
 
   ionViewWillEnter() {
     this.httpService.makeGet('auth/receive_infoconnect').subscribe(
-      // user => {
-      //   this.user = user;
-      // },
       connect_info => {
         this.connect_info = connect_info;
         console.log(connect_info);

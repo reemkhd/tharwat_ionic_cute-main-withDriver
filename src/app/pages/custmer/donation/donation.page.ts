@@ -4,6 +4,8 @@ import { AlertService } from 'src/app/services/alert.service';
 import{ HttpServiceService}  from '../../../services/http-service.service';
 import { ModalController, NavController, NavParams } from '@ionic/angular';
 import { FormBuilder, FormArray, FormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 
 @Component({
   selector: 'app-donation',
@@ -18,7 +20,8 @@ export class DonationPage implements OnInit {
     private httpService :HttpServiceService,
     private modalController: ModalController,
     private navCtrl: NavController,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
   
   public addmore: FormGroup;  
@@ -140,7 +143,8 @@ export class DonationPage implements OnInit {
       },
       () => {
         this.modalController.dismiss();
-        this.navCtrl.navigateForward('/info-connect');
+        this.navCtrl.navigateForward('/info-connect', this.donations_info.order_number);
+
       }
     )
   }

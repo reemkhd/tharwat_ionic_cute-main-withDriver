@@ -69,6 +69,8 @@ import{ HttpServiceService}  from '../../../services/http-service.service';
 import { ModalController, NavController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import * as moment from 'moment';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-info-connect',
   templateUrl: './info-connect.page.html',
@@ -82,10 +84,12 @@ export class InfoConnectPage implements OnInit {
     private httpService :HttpServiceService,
     private modalController: ModalController,
     private navCtrl: NavController,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private route: ActivatedRoute
   ) { }
 
   public addmore: FormGroup;
+  order_number: any;
 
   ngOnInit() {
     this.addmore = this.fb.group({
@@ -105,6 +109,7 @@ export class InfoConnectPage implements OnInit {
   }
 
   onSubmit(){
+    // this.info_connect.order_number = ;
     this.info_connect.birth_date = moment(this.info_connect.birth_date).format("YYYY-MM-DD")
     this.info_connect.name = this.addmore.get('name').value
     this.info_connect.numberphone = this.addmore.get('numberphone').value
@@ -130,6 +135,8 @@ export class InfoConnectPage implements OnInit {
       () => {
         this.modalController.dismiss();
         this.navCtrl.navigateForward('/home');
+
+
       }
     )
   }

@@ -40,10 +40,7 @@ export class NewComponent implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.httpService.makeGet('auth/api_receive_orders').subscribe(
-      // user => {
-      //   this.user = user;
-      // },
+    this.httpService.makeGet('auth/api_receive_orders_wait').subscribe(
       order_info => {
         this.order_info = order_info;
         console.log(order_info);
@@ -51,11 +48,9 @@ export class NewComponent implements OnInit {
     )
 
     this.httpService.makeGet('auth/receive_infoconnect').subscribe(
-      // user => {
-      //   this.user = user;
-      // },
       connect_info => {
         this.connect_info = connect_info;
+        console.log('connect_info');
         console.log(connect_info);
       }
     )
